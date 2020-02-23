@@ -1,0 +1,148 @@
+1.显示初始功能选择界面：1添加学生，2删除学生，3查找学生，4修改学生，5输出所有学生，6退出
+
+
+int welcome()
+{
+    int n;
+    printf("           欢迎使用西邮秃头学生管理系统      \n");
+    printf("   1.增加学生信息       2.删除学生信息       \n");
+    printf("   3.查找学生信息       4.修改学生信息       \n");
+    printf("   5.输出所有学生信息   6.退出               \n");
+    scanf("%d", &n); 
+    return n;
+}
+
+
+2.功能一：输入学生学号，姓名，分数，性别，年龄。并决定继续输入下个学生信息还是退回主页面。
+
+
+int input()
+{
+
+    int id=0;
+    int i=0;
+    char sh;
+add:
+    printf("请输入你要添加的学生的学号\n");
+    scanf("%d", &id);
+    num[count].id=id;
+    printf("请输入你要添加学生的姓名\n");
+    scanf("%s", num[count].name);
+    printf("请输入你要添加学生的分数\n");
+    scanf("%f", &num[count].score);
+    getchar();
+    printf("请输入你要添加学生的性别\n");
+    scanf("%c", &num[count].sex);
+    printf("请输入你要添加学生的年龄\n");
+    scanf("%d", &num[count].old);
+    getchar();
+    count++;
+    printf("继续输入(Y/y)，退出(N/n)\n");
+    sh=getchar();
+    if(sh=='Y'||sh=='y')
+        goto add;
+        return 1;
+}
+
+
+
+3.功能二：删除学生（还未学会）
+
+
+void del()
+{
+   
+   删除学生信息 
+   
+   
+}
+
+
+4.功能三：根据学号查找学生
+
+
+
+int search()
+{
+
+    int id, i, s, o=0;
+    loop:
+    printf("请输入你需要查找的学生的学号\n");
+    scanf("%d", &id);
+    getchar();
+    for(i=0;i<count;i++)
+    {
+        if(id==num[i].id)
+        {
+            o=1;
+          printf("姓名：%s\n", num[i].name);
+          printf("学号：%d\n", num[i].id);
+          printf("性别：%c\n", num[i].sex);
+          printf("年龄：%d\n", num[i].old);
+          printf("学分：%f\n", num[i].score);
+        }
+
+    }
+    printf("是否继续查找，如果是请输入1   返回主界面请输入 0 \n");
+    scanf("%d", &s);
+    getchar();
+    if(s==1)
+    {
+        goto loop;
+    }
+    if(s==0)
+    {
+        return -1;
+    }
+}
+
+5.功能4：修改学生各项信息（还未学会）
+
+
+int modify()
+{
+	
+	修改学生信息 
+	
+}
+
+6.功能5：显示所有学生信息
+
+void all()
+{
+    int i;
+    for(i=count-1;i>=0;i--)
+    {
+        printf("姓名：%s\n", num[i].name);
+        printf("学号：%d\n", num[i].id);
+        printf("性别：%c\n", num[i].sex);
+        printf("年龄：%d\n", num[i].old);
+        printf("分数：%f\n", num[i].score);
+    }
+}
+
+7.进行选择功能
+
+int main()
+{
+	int h;
+	while(1)
+  	{
+    	h=welcome();
+    	switch(h)
+    	{
+        	case 1:input();break;    
+        	case 2:del();break;      
+        	case 3:search();break;   
+        	case 4:modify();break;   
+        	case 5:all();break;
+        	case 6:goto end;break;
+    	}
+	}
+  
+  8.退出
+  
+  
+  end:
+    printf("感谢使用西邮秃头学生管理系统\n");
+    return 0;
